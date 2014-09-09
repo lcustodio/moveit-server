@@ -8,7 +8,13 @@ angular.module('moveitApp.controllers', []).
   }).
   controller('MainCtrl', function ($scope, socket) {
     socket.on('send:moveOn', function (data) {
-      alert("teste");
+      if(data.moveOn){
+      	$('body').removeClass("red");
+      	$('body').addClass("green");
+      } else {
+      	$('body').removeClass("green");
+      	$('body').addClass("red");
+      }
       $scope.movingOnOff = data.moveOn;
     });
   })

@@ -52,13 +52,11 @@ app.get('/api/name', api.name);
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);
 
-io.configure(function () {
-  io.set("transports", ["xhr-polling"]);
-  io.set("polling duration", 10);
-});
-
 // Socket.io Communication
 io.sockets.on('connection', require('./routes/socket'));
+
+//io.set('transports',['xhr-polling']);
+//io.set("polling duration", 3000);
 
 /**
  * Start Server
